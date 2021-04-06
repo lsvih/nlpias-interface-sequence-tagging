@@ -138,6 +138,10 @@ export default {
                 this.getData(this.idx)
             } else if (label === 'Next') {
                 this.$eventBus.emit('labelData[Annotation]', [this.task_id, this.idx, this.spans])
+                if (this.idx === this.information.task.size - 1) {
+                    this.$message.info('It\'s already the last data.')
+                    return
+                }
                 this.idx += 1
                 this.getData(this.idx)
             } else {
