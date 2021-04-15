@@ -167,6 +167,7 @@ export default {
                 }
                 console.log([start, end])
                 this.spans.push({type: label, span: [start, end]})
+                this.$eventBus.emit('labelData[Annotation]', [this.task_id, this.idx, this.spans])
             }
         },
         deleteLabel() {
