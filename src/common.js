@@ -72,19 +72,13 @@ export default {
 }
 
 export function throttle(fn, delay) {
-    let last = 0, timer = null
+    let last = 0
     return function () {
         let context = this
         let args = arguments
         let now = +new Date()
 
-        if (now - last < delay) {
-            clearTimeout(timer)
-            timer = setTimeout(function () {
-                last = now
-                fn.apply(context, args)
-            }, delay)
-        } else {
+        if (now - last >= delay) {
             last = now
             fn.apply(context, args)
         }
